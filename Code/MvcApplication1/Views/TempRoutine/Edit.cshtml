@@ -1,0 +1,164 @@
+﻿@model MvcApplication1.Models.TempRoutine
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 style="color:red">@ViewBag.message</h2>
+
+<h2>Edit</h2>
+<h1 style="color:red">@ViewBag.M</h1>
+
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<!doctype html>
+                <html lang="en">
+                    <head>
+                        <meta charset="utf-8">
+                            <title>Date Picker</title>
+                            <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+                            
+                            <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+                            <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+                            <link rel="stylesheet" href="/resources/demos/style.css">
+                            
+                            <script>
+                                $(function () {
+                                    $("#datepicker").datepicker(Date("2014/12/12"));
+                                });
+                            </script>
+                    </head>
+                    <body>
+                        @*<p>Date: <input type="text" id="datepicker" name="aText" value="submit"></p>*@
+                    </body>
+                </html>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#TempRoutineDate").datepicker(Date("2014/12/12"));
+    });
+</script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>TempRoutine</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TempRoutineDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TempRoutineDate, new { @id = "TempRoutineDate",String.Empty })
+            @Html.ValidationMessageFor(model => model.TempRoutineDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+
+        @Html.HiddenFor(model => model.RoutineId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Day)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Day)
+            @Html.ValidationMessageFor(model => model.Day)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Section)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Section)
+            @Html.ValidationMessageFor(model => model.Section)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Year)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Year)
+            @Html.ValidationMessageFor(model => model.Year)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Time_From)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Time_From)
+            @Html.ValidationMessageFor(model => model.Time_From)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Time_To)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Time_To)
+            @Html.ValidationMessageFor(model => model.Time_To)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RoutineCourseId, "Course")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("RoutineCourseId", String.Empty)
+            @Html.ValidationMessageFor(model => model.RoutineCourseId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RoutineClassroomId, "ClassRoom")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("RoutineClassroomId", String.Empty)
+            @Html.ValidationMessageFor(model => model.RoutineClassroomId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RoutineTeacherId, "Teacher")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("RoutineTeacherId", String.Empty)
+            @Html.ValidationMessageFor(model => model.RoutineTeacherId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RoutineSemesterId, "Semester")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("RoutineSemesterId", String.Empty)
+            @Html.ValidationMessageFor(model => model.RoutineSemesterId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RoutineDepartmentId, "Department")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("RoutineDepartmentId", String.Empty)
+            @Html.ValidationMessageFor(model => model.RoutineDepartmentId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RoutineTypeId, "RoutineType")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("RoutineTypeId", String.Empty)
+            @Html.ValidationMessageFor(model => model.RoutineTypeId)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

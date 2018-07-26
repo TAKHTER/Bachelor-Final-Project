@@ -1,0 +1,35 @@
+﻿@model MvcApplication1.Models.Teacher
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Teacher Details information</h2>
+
+<fieldset>
+    <legend>Teacher</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">Initial</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Initial)
+    </div>
+
+    <div class="display-label">Designation</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Designation)
+    </div>
+
+    <div class="display-label">Department</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Department.Name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TeacherId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,103 @@
+﻿@model IEnumerable<MvcApplication1.Models.Routine>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="color:red">CLASS ROUTINE FOR CSE PROGRAM (DAY)With Student</h2>
+
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+
+
+<p>
+    @if (Request.IsAuthenticated){
+    @Html.ActionLink("Create New", "Create")
+    }
+        @using (Html.BeginForm()){
+<p>
+   
+    Day:@Html.DropDownList("Day", "All")
+    Section:@Html.DropDownList("section","All")
+    Time From:@Html.DropDownList("TimeFrom", "All")
+    CourseCode:@Html.DropDownList("courseCode", "All")
+     ClassRoom:@Html.DropDownList("roomNo", "All")
+    Initial:@Html.DropDownList("teacherInitial", "All")
+
+   
+<input type="submit" value="Filter" /></p>
+}
+</p>
+
+<h1 style= "color:red ">@ViewBag.Message</h1>
+<table>
+    <tr>
+        <th>
+            Day
+        </th>
+        <th>
+            Section
+        </th>
+        <th>
+            Year
+        </th>
+        <th>
+            Time_From
+        </th>
+        <th>
+            Time_To
+        </th>
+        <th>
+            Course
+        </th>
+        <th>
+            ClassRoom
+        </th>
+        <th>
+            Teacher
+        </th>
+        <th>
+            Semester
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Day)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Section)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time_From)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time_To)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassRoom.RoomNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teacher.Initial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Semester.Name)
+        </td>
+        <td>
+            @if (Request.IsAuthenticated){
+            @Html.ActionLink("Edit", "Edit", new { id=item.RoutineId }) }|
+            @Html.ActionLink("Details", "Details", new { id=item.RoutineId }) |
+            @if (Request.IsAuthenticated){
+            @Html.ActionLink("Delete", "Delete", new { id=item.RoutineId })}
+        </td>
+    </tr>
+}
+
+</table>

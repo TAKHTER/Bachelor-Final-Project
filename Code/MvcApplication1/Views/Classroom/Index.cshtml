@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MvcApplication1.Models.ClassRoom>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+ <h1 style="color:red">@ViewBag.M</h1>
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+
+<p>
+    @if (Request.IsAuthenticated){
+    @Html.ActionLink("Create New", "Create")
+    }
+        @using (Html.BeginForm()){
+<p>
+   
+    ClassRoomNumber:@Html.DropDownList("roomNo", "All")
+
+   
+<input type="submit" value="Filter" /></p>
+}
+</p>
+
+<h1 style= "color:red ">@ViewBag.Message</h1>
+<table>
+    <tr>
+        <th>
+            RoomNo
+        </th>
+        <th>
+            Description
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ClassRoomId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ClassRoomId })@* |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ClassRoomId })*@
+        </td>
+    </tr>
+}
+
+</table>

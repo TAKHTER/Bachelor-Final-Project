@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MvcApplication1.Models.Teacher>
+
+@{
+    ViewBag.Title = "Teacher";
+}
+
+<h2>All teacher list</h2>
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+
+<p>
+    @if (Request.IsAuthenticated){
+    @Html.ActionLink("Create single New ", "Create")
+    <p></p>
+     @Html.ActionLink("Create multiple New", "Index", "UploadManagement")
+    }
+        @using (Html.BeginForm()){
+<p>
+   
+    Initial:@Html.DropDownList("teacherInitial", "All")
+
+   
+<input type="submit" value="Filter" /></p>
+}
+</p>
+@*<p>
+  
+    <button onclick="window.print();">Print!</button>
+</p>*@
+<h1 style= "color:red ">@ViewBag.Message</h1>
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Initial
+        </th>
+        <th>
+            Designation
+        </th>
+        <th>
+            Department
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Initial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Designation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.Code)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TeacherId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TeacherId }) @*|
+            @Html.ActionLink("Delete", "Delete", new { id=item.TeacherId })*@
+        </td>
+    </tr>
+}
+
+</table>
+

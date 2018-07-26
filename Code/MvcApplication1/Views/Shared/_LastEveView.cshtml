@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MvcApplication1.Models.RoutineView>
+<table>
+    @foreach(var a in Model)
+    {
+                <tr>
+                    <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                    <th style="border-image-repeat:repeat">
+                     @Html.DisplayFor(item=>a.Day)
+                    </th>
+                    <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                </tr>
+                <tr>
+                    <th></th><th>@Html.DisplayFor(item=>a.aRoutineRow[0].TimeFrom.TimeOfDay)</th><th></th>
+                    <th></th><th>@Html.DisplayFor(item=>a.aRoutineRow[1].TimeFrom.TimeOfDay)</th><th></th>
+                    <th></th><th>@Html.DisplayFor(item=>a.aRoutineRow[2].TimeFrom.TimeOfDay)</th><th></th>
+                    @*<th></th><th>@Html.DisplayFor(item=>a.aRoutineRow[3].TimeFrom.TimeOfDay)</th><th></th>
+                    <th></th><th>@Html.DisplayFor(item=>a.aRoutineRow[4].TimeFrom.TimeOfDay)</th><th></th>
+                    <th></th><th>@Html.DisplayFor(item=>a.aRoutineRow[5].TimeFrom.TimeOfDay)</th><th></th>*@
+                </tr>
+    <tr>
+        <th>Room</th>  <th>Course</th>   <th>Initial</th>
+        <th>Room</th>        <th>Course</th>        <th>Initial</th>
+        <th>Room</th>        <th>Course</th>        <th>Initial</th>
+        <th>Room</th>        <th>Course</th>        <th>Initial</th>
+        <th>Room</th>        <th>Course</th>        <th>Initial</th>
+        <th>Room</th>        <th>Course</th>        <th>Initial</th>
+    </tr>
+    
+        
+        for (int i = 0; i < a.aRoutineRow[0].slotDetailsList.Count; i++)
+        {
+           @* if (i == 0)
+            {
+                <tr>
+                    <th>
+                    @Html.DisplayFor(item=>a.Day)
+                    </th>
+                </tr>
+            }
+            *@
+        <tr>
+            @for (int j = 0; j < a.aRoutineRow.Count; j++) 
+            {
+                if (a.aRoutineRow[j].slotDetailsList.Count>0)
+                {
+                    <td>
+                        @Html.DisplayFor(item=>a.aRoutineRow[j].slotDetailsList[i].RoomNo)
+                    </td>  
+                    <td>
+                        @Html.DisplayFor(item=>a.aRoutineRow[j].slotDetailsList[i].CourseCode)
+                    </td>  
+                    <td>
+                        @Html.DisplayFor(item=>a.aRoutineRow[j].slotDetailsList[i].TeacherInitial)
+                    </td>  
+                }
+            }
+            </tr>
+        }
+    }
+</table>
+
+

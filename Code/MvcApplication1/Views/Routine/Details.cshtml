@@ -1,0 +1,70 @@
+﻿@model MvcApplication1.Models.Routine
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Routine</legend>
+
+    <div class="display-label">Day</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Day)
+    </div>
+
+    <div class="display-label">Section</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Section)
+    </div>
+
+    <div class="display-label">Year</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Year)
+    </div>
+
+    <div class="display-label">Time_From</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Time_From.GetDateTimeFormats()[107])
+    </div>
+
+    <div class="display-label">Time_To</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Time_To.GetDateTimeFormats()[107])
+    </div>
+
+    <div class="display-label">Course</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Course.Code)
+    </div>
+
+    <div class="display-label">ClassRoom</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ClassRoom.RoomNo)
+    </div>
+
+    <div class="display-label">Teacher</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Teacher.Initial)
+    </div>
+
+    <div class="display-label">Semester</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Semester.Name)
+    </div>
+
+    <div class="display-label">Department</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Department.Code)
+    </div>
+
+    <div class="display-label">RoutineType</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RoutineType.TypeName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.RoutineId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

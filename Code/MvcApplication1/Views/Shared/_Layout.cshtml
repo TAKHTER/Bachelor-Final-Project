@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/jquery-ui/redmond/jquery-ui-1.8.21.custom.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.8.11.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ui/minified/jquery.ui.core.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ui/minified/jquery.ui.datepicker.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-2.5.3.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/themes/base/smoothness/jquery-ui-1.8.22.custom.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Content/themes/base/smoothness/jquery-ui-1.8.22.custom.min.js")" type="text/javascript"></script> 
+     <meta name="viewport" content="width=device-width" />
+       @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body style="background-color:#a0c1bc">
+    @*<body>#158f7d
+      "background-color:#a0c1bc"
+    "background-image:url(./Images/gg.jpg)"
+    *@
+   
+    <div class="float-right Imag" id="title">
+                <img src="@Url.Content("~/Content/Images/diulogo.png")" border="0" />
+                
+    </div>
+    <div class="page">
+        <header>
+           @* <div class="float-middle" id="title">
+                <img src="@Url.Content("~/Content/Images/diulogo.png")" border="0" />
+                
+            </div>*@
+            <div id="logindisplay">
+                @Html.Partial("_LogOnPartial")
+            </div>
+            <br />
+            <nav>
+                <ul id="menu">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About Us", "About", "Home")</li>
+                     <li>@Html.ActionLink("Routine", "Index", "Routine")</li>
+                        <li>@Html.ActionLink("Evening Routine", "Index", "EveRoutine")</li>
+
+                    @if (Request.IsAuthenticated)
+                    { 
+                        <li>@Html.ActionLink("Empty Slots", "ShowEmptySlots", "TempRoutine")</li>                        
+                        if (User.IsInRole("Admin")){
+                            <li>@Html.ActionLink("Upload a Routine", "Index", "Upload")</li>
+                            <li>@Html.ActionLink("Other Managements", "ManageOthers", "Home")</li> 
+                            <li>@Html.ActionLink("Reports", "Index", "Report")</li>                             
+                        }
+                        <li>@Html.ActionLink("Change Password", "ChangePassword", "Account")</li>
+                    }
+                    
+                </ul>
+            </nav>
+        </header>
+        <section id="main">
+            @RenderBody()
+        </section>
+        <footer>
+            <nav>
+                <ul id="menu11">
+                    @Html.ActionLink("Home", "Index", "Home")
+                    @Html.ActionLink("About", "About", "Home")
+                </ul>
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>

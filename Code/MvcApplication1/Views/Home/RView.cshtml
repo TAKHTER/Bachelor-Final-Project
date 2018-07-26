@@ -1,0 +1,83 @@
+﻿@model IEnumerable<MvcApplication1.Models.RoutineView>
+
+<p>
+  
+    <button onclick="window.print();">Print</button>
+</p>
+ 
+<div class="float-right">
+<img src="@Url.Content("~/Content/Images/diulogo.png")"  style="marker-mid:initial"  />
+    </div>
+<h1 style="color:blue">@ViewBag.message </h1>
+<h2 style="color:seagreen">@ViewBag.message1 </h2>
+
+           
+<br />
+<table>
+    @foreach(var a in Model)
+    {
+                <tr>
+                    <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                    <th style="border-image-repeat:repeat">
+                     @Html.DisplayFor(item=>a.Day)
+                    </th>
+                    <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                </tr>
+                <tr>
+                    <th></th><th>@Html.DisplayFor(item=>a.aRoutineRow[0].TimeFrom.GetDateTimeFormats()[107])</th><th></th>
+                    <th></th><th>@Html.DisplayFor(item=>a.aRoutineRow[1].TimeFrom.GetDateTimeFormats()[107])</th><th></th>
+                    <th></th><th>@Html.DisplayFor(item=>a.aRoutineRow[2].TimeFrom.GetDateTimeFormats()[107])</th><th></th>
+                    <th></th><th>@Html.DisplayFor(item=>a.aRoutineRow[3].TimeFrom.GetDateTimeFormats()[107])</th><th></th>
+                    <th></th><th>@Html.DisplayFor(item=>a.aRoutineRow[4].TimeFrom.GetDateTimeFormats()[107])</th><th></th>
+                    <th></th><th>@Html.DisplayFor(item=>a.aRoutineRow[5].TimeFrom.GetDateTimeFormats()[107])</th><th></th>
+                </tr>
+    <tr>
+        <th>Room</th>  <th>Course</th>   <th>Initial</th>
+        <th>Room</th>        <th>Course</th>        <th>Initial</th>
+        <th>Room</th>        <th>Course</th>        <th>Initial</th>
+        <th>Room</th>        <th>Course</th>        <th>Initial</th>
+        <th>Room</th>        <th>Course</th>        <th>Initial</th>
+        <th>Room</th>        <th>Course</th>        <th>Initial</th>
+    </tr>
+    
+        
+        for (int i = 0; i < a.aRoutineRow[0].slotDetailsList.Count; i++)
+        {
+           @* if (i == 0)
+            {
+                <tr>
+                    <th>
+                    @Html.DisplayFor(item=>a.Day)
+                    </th>
+                </tr>
+            }
+            *@
+        <tr>
+            @for (int j = 0; j < a.aRoutineRow.Count; j++) 
+            {
+              <td>
+                  @Html.DisplayFor(item=>a.aRoutineRow[j].slotDetailsList[i].RoomNo)
+              </td>  
+              <td>
+                  @Html.DisplayFor(item=>a.aRoutineRow[j].slotDetailsList[i].CourseCode)
+              </td>  
+              <td>
+                  @Html.DisplayFor(item=>a.aRoutineRow[j].slotDetailsList[i].TeacherInitial)
+              </td>  
+            }
+            </tr>
+        }
+        <tr>
+        <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                    <th></th>
+                    <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+            </tr>
+        <tr>
+        <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                    <th></th>
+                    <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+            </tr>
+    }
+</table>
+
+

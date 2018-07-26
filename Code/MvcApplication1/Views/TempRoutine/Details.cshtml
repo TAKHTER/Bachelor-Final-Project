@@ -1,0 +1,80 @@
+﻿@model MvcApplication1.Models.TempRoutine
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TempRoutine</legend>
+
+    <div class="display-label">TempRoutineDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TempRoutineDate)
+    </div>
+
+    <div class="display-label">UserName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserName)
+    </div>
+
+    <div class="display-label">Day</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Day)
+    </div>
+
+    <div class="display-label">Section</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Section)
+    </div>
+
+    <div class="display-label">Year</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Year)
+    </div>
+
+    <div class="display-label">Time_From</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Time_From)
+    </div>
+
+    <div class="display-label">Time_To</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Time_To)
+    </div>
+
+    <div class="display-label">Course</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Course.Name)
+    </div>
+
+    <div class="display-label">ClassRoom</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ClassRoom.RoomNo)
+    </div>
+
+    <div class="display-label">Teacher</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Teacher.Name)
+    </div>
+
+    <div class="display-label">Semester</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Semester.Name)
+    </div>
+
+    <div class="display-label">Department</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Department.Name)
+    </div>
+
+    <div class="display-label">RoutineType</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RoutineType.TypeName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.RoutineId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

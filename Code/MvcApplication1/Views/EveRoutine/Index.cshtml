@@ -1,0 +1,102 @@
+﻿@model IEnumerable<MvcApplication1.Models.EveRoutine>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Evening Routine Only for all departments</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm()){
+<p>
+    Department:@Html.DropDownList("department", "All")
+     Semester:@Html.DropDownList("semeType", "All")
+      Year:@Html.DropDownList("year", "All")
+   </p>
+       <p>
+    Day:@Html.DropDownList("Day", "All")
+    Section:@Html.DropDownList("section","All")
+    CourseCode:@Html.DropDownList("courseCode", "All")
+     ClassRoom:@Html.DropDownList("roomNo", "All")
+    Initial:@Html.DropDownList("teacherInitial", "All")
+
+   
+<input type="submit" value="Filter" /></p>
+}
+<h1 style= "color:red ">@ViewBag.Message</h1>
+
+<table>
+    <tr>
+        <th>
+            Batch
+        </th>
+        <th>
+            Day
+        </th>
+        <th>
+            Section
+        </th>
+        <th>
+            Time_From
+        </th>
+        <th>
+            Time_To
+        </th>
+        <th>
+            Course
+        </th>
+        <th>
+            Course Name
+        </th>
+        <th>
+            ClassRoom
+        </th>
+        <th>
+            Teacher
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BatchNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Day)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Section)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time_From.GetDateTimeFormats()[107])
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time_To.GetDateTimeFormats()[107])
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassRoom.RoomNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teacher.Initial)
+        </td>
+        @if (User.IsInRole("Admin"))
+        {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RoutineId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RoutineId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RoutineId })
+        </td>
+        }
+    </tr>
+}
+
+</table>

@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "UploadComplete";
+}
+@if (ViewBag.message == "CSV has been parsed Successfully") 
+    {
+    <h1 style="color:green">@ViewBag.message</h1>
+    }
+else
+    {
+    <h1 style="color:red">@ViewBag.message</h1>
+    }
+@if (ViewData["adata"] != null) 
+{
+    <h1 style="color:red">@ViewData["adata"]</h1>
+}
+<h1 style="color:red">@ViewBag.M1</h1>
+@*@model IEnumerable<ExportFromExcelToDatabase.Models.Person>
+
+@{
+    ViewBag.Title = "UploadComplete";
+}
+
+<h2>UploadComplete</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>
+            Name
+        </th>
+        <th>
+            LastName
+        </th>
+        <th>
+            DateOfBirth
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.PId</td>
+        <td>
+            @item.Name
+        </td>
+        <td>
+            @item.LastName
+        </td>
+        <td>
+            @String.Format("{0:g}", item.DateOfBirth)
+        </td>
+    </tr>
+}
+
+</table>
+
+*@

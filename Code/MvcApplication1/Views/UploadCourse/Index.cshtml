@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@ViewBag.Message
+<h1 style="color:red">@ViewBag.M</h1>
+
+ @Html.ActionLink("Back To Course Index", "Index","Course")
+<h2>Give Course's information as following format</h2>
+<h3 style="color:green">Name [tab] Code [tab] Credit [tab] Level [tab] Trem[tab] Department </h3>
+<h2 style="color:red">Or</h2>
+<h3 style="color:green">You can copy data from excel sheet and paste in the box.</h3>
+
+@using (Html.BeginForm()) 
+{
+    
+    @Html.TextArea("Body", null, new { cols = "100", rows = "15" })
+    <p><input type="submit" value="Save" /></p>
+
+}

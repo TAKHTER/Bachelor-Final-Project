@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MvcApplication1.Models.RoutineView>
+@{
+    ViewBag.Title = "Welcome To Routine Management System";
+}
+
+<h2>@ViewBag.Message</h2>
+<h1 style="color:red">@ViewBag.M</h1>
+<p>
+    To learn more about Daffodil International University visit <a href="http://www.daffodilvarsity.edu.bd/" title="Daffodil International University website ">http://www.daffodilvarsity.edu.bd/</a>.
+</p>
+
+
+<h1 style="color:red">@ViewBag.NotFoundMessage</h1>
+
+@using (Html.BeginForm()) {
+    <fieldset>
+        <legend> Search a routine </legend>
+        @*Section:@Html.DropDownList("section","All")*@
+        <p></p>
+
+        <div>
+        Semester:@Html.DropDownList("SemesterId", String.Empty)
+            Year:@Html.DropDownList("Year", String.Empty)
+       
+        </div>
+            <p></p>
+        <div>
+            Select Day or Evening:@Html.DropDownList("TypeId", String.Empty)
+        </div>
+            <p></p>
+        <div>
+            Select a Department:@Html.DropDownList("DepartmentId", String.Empty)
+        </div>
+
+        <h3 style="color:red">*@ViewBag.Message2</h3>
+        <p>
+            <input type="submit" value="Show Routine" />
+        </p>
+      
+    </fieldset>
+}
+
+   <div id="section-data">
+       @if(Model!=null)
+       {
+            @Html.Partial("~/Views/Shared/_LastView.cshtml", Model)
+
+       }
+
+   </div>
+

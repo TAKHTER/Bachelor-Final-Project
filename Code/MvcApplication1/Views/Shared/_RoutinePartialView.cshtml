@@ -1,0 +1,92 @@
+﻿@model IEnumerable<MvcApplication1.Models.Routine>
+
+@{
+    ViewBag.Title = "Index";
+}
+@if(Model!=null){
+<h2 style="color:red">The Class Routine you Searched For is shown below</h2>
+
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+
+
+@*<p>
+
+        @using (Html.BeginForm()){
+<p>
+   
+    Day:@Html.DropDownList("Day", "All")
+    Section:@Html.DropDownList("section","All")
+    Time From:@Html.DropDownList("TimeFrom", "All")
+    CourseCode:@Html.DropDownList("courseCode", "All")
+     ClassRoom:@Html.DropDownList("roomNo", "All")
+    Initial:@Html.DropDownList("teacherInitial", "All")
+
+   
+<input type="submit" value="Filter" /></p>
+}
+</p>*@
+<table>
+    <tr>
+        <th>
+            Day
+        </th>
+        <th>
+            Section
+        </th>
+        <th>
+            Year
+        </th>
+        <th>
+            Time_From
+        </th>
+        <th>
+            Time_To
+        </th>
+        <th>
+            Course
+        </th>
+        <th>
+            ClassRoom
+        </th>
+        <th>
+            Teacher
+        </th>
+        <th>
+            Semester
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Day)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Section)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time_From.TimeOfDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time_To.TimeOfDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassRoom.RoomNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teacher.Initial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Semester.Name)
+        </td>
+    </tr>
+}
+</table>
+}

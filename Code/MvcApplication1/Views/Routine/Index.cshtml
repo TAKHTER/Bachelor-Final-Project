@@ -1,0 +1,119 @@
+﻿@model IEnumerable<MvcApplication1.Models.Routine>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of all departments Routine</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+     @using (Html.BeginForm()){
+<p>
+    Department:@Html.DropDownList("department", "All")
+    RoutineType:@Html.DropDownList("routineType", "All")
+     Semester:@Html.DropDownList("semeType", "All")
+      Year:@Html.DropDownList("year", "All")
+   </p>
+   <p>
+        Day:@Html.DropDownList("Day", "All")
+        Section:@Html.DropDownList("section","All")
+        @*Time From:@Html.DropDownList("TimeFrom", "All")*@
+        CourseCode:@Html.DropDownList("courseCode", "All")
+        ClassRoom:@Html.DropDownList("roomNo", "All")
+        Initial:@Html.DropDownList("teacherInitial", "All")
+<input type="submit" value="Filter" /></p>
+}
+</p>
+
+<h1 style= "color:red ">@ViewBag.Message</h1>
+
+<table>
+    <tr>
+        <th>
+            Day
+        </th>
+        <th>
+             ClassRoom
+        </th>
+        <th>
+            Time_From
+        </th>
+        <th>
+            Time_To
+        </th>
+        <th>
+            Course
+        </th>
+        <th>
+            Section
+        </th>
+        <th>
+            Teacher
+        </th>
+        <th>
+            Department
+        </th>
+        <th>
+            Semester
+        </th>
+        <th>
+            Year
+        </th>
+        
+     @*   <th>
+            RoutineType
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Day)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassRoom.RoomNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time_From.GetDateTimeFormats()[107])
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time_To.GetDateTimeFormats()[107])
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Section)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teacher.Initial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Semester.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        
+       @* <td>
+            @Html.DisplayFor(modelItem => item.RoutineType.TypeName)
+        </td>*@
+        
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RoutineId })| 
+            @Html.ActionLink("Details", "Details", new { id=item.RoutineId }) | 
+            @Html.ActionLink("Delete", "Delete", new { id=item.RoutineId })
+            </td>
+            }
+        
+    </tr>
+}
+
+</table>

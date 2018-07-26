@@ -1,0 +1,115 @@
+﻿@model IEnumerable<MvcApplication1.Models.TempRoutine>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+
+<h2 style =" color:red">@ViewBag.ErrorMessage</h2>
+
+
+<p>
+    @Html.ActionLink("Back to Empty Slot List", "ShowEmptySlots")
+</p>
+
+<p>
+    @Html.ActionLink("Book a Room", "Create")
+</p>
+
+  
+<table>
+    <tr>
+        <th>
+            TempRoutineDate
+        </th>
+        <th>
+            UserName
+        </th>
+        <th>
+            Day
+        </th>
+        <th>
+            Section
+        </th>
+       @* <th>
+            Year
+        </th>*@
+        <th>
+            Time_From
+        </th>
+        <th>
+            Time_To
+        </th>
+        <th>
+            Course
+        </th>
+        <th>
+            ClassRoom
+        </th>
+        <th>
+            Teacher
+        </th>
+        @*<th>
+            Semester
+        </th>*@
+        <th>
+            Department
+        </th>
+       @* <th>
+            RoutineType
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    var j = item.TempRoutineDate.ToShortDateString();
+    
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TempRoutineDate.GetDateTimeFormats()[3])
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Day)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Section)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Time_From.GetDateTimeFormats()[107])
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time_To.GetDateTimeFormats()[107])
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassRoom.RoomNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teacher.Initial)
+        </td>
+       @* <td>
+            @Html.DisplayFor(modelItem => item.Semester.Name)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.Code)
+        </td>
+       @* <td>
+            @Html.DisplayFor(modelItem => item.RoutineType.TypeName)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RoutineId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RoutineId }) |
+            @Html.ActionLink("Unbook", "Delete", new { id=item.RoutineId })
+          
+        </td>
+    </tr>
+    }
+</table>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MvcApplication1.Models.Department>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All information about department</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+</p>
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+
+
+<p>
+ @using (Html.BeginForm()){
+    <p>   
+    DeptCode:@Html.DropDownList("DeptCode", "All")
+    
+<input type="submit" value="Filter" /></p>
+}
+</p>
+
+<h1 style= "color:red ">@ViewBag.Message</h1>
+
+
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Code
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DepartmentId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DepartmentId }) @*|
+            @Html.ActionLink("Delete", "Delete", new { id=item.DepartmentId })*@
+        </td>
+    </tr>
+}
+
+</table>

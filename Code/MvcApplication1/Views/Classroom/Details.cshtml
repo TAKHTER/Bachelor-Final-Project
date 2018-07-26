@@ -1,0 +1,25 @@
+﻿@model MvcApplication1.Models.ClassRoom
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ClassRoom</legend>
+
+    <div class="display-label">RoomNo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RoomNo)
+    </div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ClassRoomId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

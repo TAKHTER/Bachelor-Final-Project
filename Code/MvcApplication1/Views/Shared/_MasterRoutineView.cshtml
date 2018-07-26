@@ -1,0 +1,95 @@
+﻿@model IEnumerable<MvcApplication1.Models.RoutineView>
+
+@{
+    ViewBag.Title = "Master Routine";
+}
+<table>
+    @if (Model != null) 
+    {
+        foreach (var day in Model) 
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => day.Day)
+                </th>
+            </tr>
+        @Html.Partial("~/Views/Shared/_LastView.cshtml",Model)
+        }
+        
+    }
+</table>
+<table>
+    <tr>
+        <th>Room</th>  <th>Course</th>   <th>Initial</th>
+        <th>Room</th>        <th>Course</th>        <th>Initial</th>
+        <th>Room</th>        <th>Course</th>        <th>Initial</th>
+        <th>Room</th>        <th>Course</th>        <th>Initial</th>
+        <th>Room</th>        <th>Course</th>        <th>Initial</th>
+        <th>Room</th>        <th>Course</th>        <th>Initial</th>
+    </tr>
+</table>
+@*<table>
+    @if (Model != null)
+    {
+        foreach (var day in Model)
+        {
+            <tr>
+            @foreach (var time in day.aRoutineRow) 
+            {
+                
+                <td>
+                    @Html.DisplayFor(modelItem=>time.TimeFrom.TimeOfDay)
+                    @Html.DisplayFor(modelItem=>time.TimeTo.TimeOfDay)
+                </td>
+                
+            }
+            </tr>
+        }
+    }
+</table>
+<table>
+    @if(Model!=null)
+    {  
+        foreach (var day in Model) 
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => day.Day)
+                </td>
+            </tr>
+
+            foreach (var time in day.aRoutineRow) 
+            {
+                <tr>
+              
+                <td>
+                    @Html.DisplayFor(modelItem=>time.TimeFrom.TimeOfDay)
+                    @Html.DisplayFor(modelItem=>time.TimeTo.TimeOfDay)
+                </td>
+                </tr>  
+                    foreach (var slot in time.slotDetailsList)
+                    {
+                        <tr>
+                         <td>
+                             @Html.DisplayFor(modelItem=>slot.RoomNo)
+                         </td>
+                
+                         <td>
+                             @Html.DisplayFor(modelItem=>slot.CourseCode)
+                         </td>
+                
+                         <td>
+                             @Html.DisplayFor(modelItem=>slot.TeacherInitial)
+                         </td>
+                </tr>
+                        
+                    }
+                
+            }
+            
+        }
+    }
+</table>*@
+
+
+

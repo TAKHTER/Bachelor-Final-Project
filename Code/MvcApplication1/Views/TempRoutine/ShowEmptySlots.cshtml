@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MvcApplication1.Models.Routine>
+
+@{
+    ViewBag.Title = "Show Empty Slots";
+}
+
+<h2>Empty Slots</h2>
+
+<h2 style =" color:red">@ViewBag.ErrorMessage</h2>
+
+<p>
+    @Html.ActionLink("Show Make up Routine List", "Index")
+</p>
+
+<p>
+   @* @Html.ActionLink("Book A Room", "Create")*@
+</p>
+
+    @using (Html.BeginForm()){
+
+        <p>
+    
+    Semester:@Html.DropDownList("semeType", "All")
+     Year:@Html.DropDownList("year", "All")
+
+   
+   </p>
+<p>
+   Department:@Html.DropDownList("department", "All")
+   Day:@Html.DropDownList("day", "All") 
+        <input type="submit" value="Filter" /></p>
+}
+
+
+<table>
+    <tr>
+        <th>
+            Day
+        </th>
+        <th>
+            Room No
+        </th>
+        <th>
+            Time From
+        </th>
+        <th>
+            Time To
+        </th>
+        <th></th>
+    </tr>
+@if(Model!=null){
+foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Day)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassRoom.RoomNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time_From.GetDateTimeFormats()[107])
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time_To.GetDateTimeFormats()[107])
+        </td>
+        <td>
+            @Html.ActionLink("Book", "Create", new { id=item.RoutineId }) 
+        </td>
+    </tr>
+}
+}
+</table>
